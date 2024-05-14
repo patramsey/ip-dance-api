@@ -1,0 +1,107 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "IP Address Information API",
+        "version": "1.0.0",
+        "description": "This API provides detailed information about a given IP address."
+    },
+    "servers": [
+        {
+            "url": "https://api.ip.dance",
+            "description": "Production server"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "servers": [
+                    {
+                        "url": "https://api.ip.dance/",
+                        "description": "IP Dance API URL"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/IPInfo",
+                                    "properties": {
+                                        "ip": {
+                                            "description": "The IP address being queried.",
+                                            "type": "string",
+                                            "example": "103.22.203.12"
+                                        },
+                                        "regionCode": {
+                                            "description": "The region code associated with the IP address.",
+                                            "type": "string",
+                                            "example": "CA"
+                                        },
+                                        "asn": {
+                                            "description": "The Autonomous System Number (ASN) followed by the associated organization for the IP address.",
+                                            "type": "string",
+                                            "example": "13335, Cloudflare"
+                                        },
+                                        "httpProtocol": {
+                                            "description": "The HTTP protocol version used by the IP address.",
+                                            "type": "string",
+                                            "example": "HTTP/2"
+                                        },
+                                        "location": {
+                                            "description": "The geographic location associated with the IP address, including city, state, and country.",
+                                            "type": "string",
+                                            "example": "San Francisco, CA, US"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "description": "A successful response containing IP address information."
+                    },
+                    "400": {
+                        "description": "Invalid IP address provided."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                },
+                "summary": "Retrieve IP address information",
+                "description": "Returns detailed information about the specified IP address, including region, ASN, HTTP protocol, and location."
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "IPInfo": {
+                "type": "object",
+                "properties": {
+                    "ip": {
+                        "description": "The IP address being queried.",
+                        "type": "string",
+                        "example": "103.22.203.12"
+                    },
+                    "regionCode": {
+                        "description": "The region code associated with the IP address.",
+                        "type": "string",
+                        "example": "CA"
+                    },
+                    "asn": {
+                        "description": "The Autonomous System Number (ASN) followed by the associated organization for the IP address.",
+                        "type": "string",
+                        "example": "13335, Cloudflare"
+                    },
+                    "httpProtocol": {
+                        "description": "The HTTP protocol version used by the IP address.",
+                        "type": "string",
+                        "example": "HTTP/2"
+                    },
+                    "location": {
+                        "description": "The geographic location associated with the IP address, including city, state, and country.",
+                        "type": "string",
+                        "example": "San Francisco, CA, US"
+                    }
+                }
+            }
+        }
+    }
+}

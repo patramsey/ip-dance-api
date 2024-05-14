@@ -1,0 +1,4 @@
+package: ipdance
+generate:
+  models: true
+output: ipdance-api.gen.go
